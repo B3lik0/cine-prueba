@@ -1,12 +1,9 @@
 /*Sistema de apartado de cines*/
-import { mostrarMenu, selectOption } from './menu.js';
+import { mostrarMenu } from './menu.js';
 
 const main = async () => {
     let opt
-    do {
-        opt = await mostrarMenu()
-        selectOption(opt)
-    } while (true)
+    opt = await mostrarMenu()
 }
 
 main()
