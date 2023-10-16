@@ -6,10 +6,9 @@ const rl = readline.createInterface({
 })
 const matriz = Array.from({ length: 10 }, () => Array.from({ length: 10 }, () => "L"));
 const asientoOcupado = "X";
-
+let asiento;
 
 export function mostrarMenu() {
-    rl.resume()
     return new Promise(resolve => {
         console.clear()
         console.log("**********************************************".green);
@@ -33,13 +32,13 @@ export function selectOption(option) {
             listarAsientos();
             break;
         case "Q":
-            rl.close();
+            cerrarMenu()
             break;
     }
 
 }
 
-export function elegirAsiento() {
+async function elegirAsiento() {
     console.clear()
     let question
     console.log("**********************************************");
@@ -66,6 +65,7 @@ export function elegirAsiento() {
 }
 
 async function listarAsientos() {
+
     console.clear()
     console.log("**********************************************");
     console.log("Listado de asientos");
@@ -76,10 +76,20 @@ async function listarAsientos() {
     console.log("**********************************************");
     await new Promise(resolve =>
         rl.question("Presione enter para continuar", () => {
-            rl.pause()
             resolve()
         }))
-    mostrarMenu()
+    // mostrarMenu()
 
 }
 
+async function cerrarMenu() {
+    return new Promise(resolve => {
+        rl.close()
+        resolve()
+        console.clear()
+        console.log("**********************************************");
+        console.log("Gracias por su compra vuelva pronto".green);
+        console.log("**********************************************");
+        process.exit()
+    })
+}
