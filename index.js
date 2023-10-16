@@ -1,9 +1,9 @@
 /*Sistema de apartado de cines*/
 import { mostrarMenu } from './menu.js';
 
+//FIXME: podria mejorarse la inicializacion
 const main = async () => {
-    let opt
-    opt = await mostrarMenu()
+    await mostrarMenu()
 }
 
 main()
